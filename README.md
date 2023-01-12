@@ -36,4 +36,6 @@ Make sure you have covered enough content to meet the prerequisites before start
 
 > ‼️ Make sure to check out the walk-through video on your course portal to see this setup process happening live!
 
+question 11:
 
+it looks like it is location and minumum night stay that make the biggest difference

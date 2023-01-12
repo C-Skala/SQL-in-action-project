@@ -6,10 +6,12 @@
 
 
 
+
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 1 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find out how many rows are in the table "final_airbnb"
 -- EXPECTED OUTPUT: 146
 
+-- SELECT * FROM final_airbnb; 
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 2 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find out the name of the host for "host_id" 63613
@@ -17,6 +19,7 @@
 
 -- EXPECTED OUTPUT: Patricia
 
+-- SELECT host_id, host_name FROM final_airbnb WHERE host_id = 63613
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 3 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to just show the unique neighbourhoods listed
@@ -24,6 +27,7 @@
 
 -- EXPECTED OUTPUT: 40 neighbourhoods listed
 
+-- SELECT DISTINCT neighbourhood FROM final_airbnb;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 4 >>>>>>>>>>>>>>>>>>>>>>>
 
@@ -34,6 +38,8 @@
 
 -- EXPECTED OUTPUT: Highest = 785, Lowest = 55
 
+-- SELECT * FROM final_airbnb order by price desc LIMIT 1;
+-- SELECT * FROM final_airbnb order by price desc LIMIT 1 offset 145;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 5 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the average availability for all listings in the data set (using the availability_365 column)
@@ -41,6 +47,7 @@
 
 -- EXPECTED OUTPUT: 165.3904
 
+-- SELECT AVG(availability_365) FROM final_airbnb; 
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 6 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find all listings that do NOT have a review
@@ -48,6 +55,7 @@
 
 -- EXPECTED OUTPUT: 6 rows
 
+-- SELECT * FROM final_airbnb WHERE number_of_reviews = 0;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 7 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the id of the listing with a room_type of "Private room" that has the most reviews 
@@ -55,6 +63,7 @@
 
 -- EXPECTED OUTPUT: 58059
 
+-- SELECT * FROM final_airbnb WHERE room_type = 'Private room' order by number_of_reviews desc LIMIT 1 ;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 8 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find the most popular neighbourhood for listings 
@@ -63,6 +72,9 @@
 
 -- EXPECTED OUTPUT: Williamsburg
 -- INVESTIGATE: Should Williamsburg be crowned the most popular neighbourhood?
+	-- no harlem has the same amount of listings
+
+-- SELECT neighbourhood, COUNT(*) as 'number of listings' FROM final_airbnb group by neighbourhood;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 9 >>>>>>>>>>>>>>>>>>>>>>>
 -- Query the data to discover which listing is the most popular using the reviews_per_month for all listings with a minimum_nights value of less than 7
@@ -70,6 +82,7 @@
 
 -- EXPECTED OUTPUT: 58059
 
+-- SELECT * FROM final_airbnb WHERE minimum_nights < 7 order by reviews_per_month desc LIMIT 1 ;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 10 >>>>>>>>>>>>>>>>>>>>>>>
 -- Find out which host has the most listings. 
@@ -79,6 +92,8 @@
 
 -- EXPECTED OUTPUT: The Box House Hotel with 6 listings
 
+-- SELECT host_id, COUNT(*) as 'number of listings' FROM final_airbnb group by host_id;
+-- select * from final_airbnb where host_id = 417504;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 11 >>>>>>>>>>>>>>>>>>>>>>>
 -- <<<<<<<<<<<<<<<<<<<<<<< WRAP UP >>>>>>>>>>>>>>>>>>>>>>>>>
